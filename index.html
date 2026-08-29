@@ -336,6 +336,7 @@ async function json(url){
   try{j=await r.json();}
   catch(e){throw new Error('risposta non leggibile ('+r.status+')');}
   if(!r.ok||(j&&j.error)) throw new Error((j&&j.reason)||('HTTP '+r.status));
+  if(!j) throw new Error('risposta vuota dal servizio');
   return Array.isArray(j)?j:[j];
 }
 
@@ -439,22 +440,30 @@ function vicino(arr,i){
 }
 
 async function carica(){
+  DIAGNOSI.length=0;
+
   const v=await caricaVento();
+  if(!v || !Array.isArray(v.r) || !v.r.length){
+    throw new Error('nessun dato di vento ricevuto');
+  }
   dueModelli=v.due;
 
   const m=await caricaMare();
   ORE=v.r[0]?.hourly?.time||[];
+  if(!ORE.length){
+    throw new Error('il servizio meteo non ha restituito le ore di previsione');
+  }
 
   DATI=SPIAGGE.map((s,i)=>{
-    const h=v.r[i]?.hourly||{};
-    const mh=(m&&m.r[i])?m.r[i].hourly:null;
+    const h=(v.r[i]&&v.r[i].hourly)?v.r[i].hourly:(v.r[0]?.hourly||{});
+    const mh=(m&&m.r[i]&&m.r[i].hourly)?m.r[i].hourly:null;
 
     const mod1=dueModelli?'icon_seamless':null;
     const mod2=dueModelli?'gfs_seamless':null;
 
     const onda=mh?.wave_height||[];
     const ondaDir=mh?.wave_direction||[];
-    const periodo=mh?.wave_period||[];
+    const periodoSerie=mh?.wave_period||[];
     const sst=(mh&&m.sst)?(mh.sea_surface_temperature||[]):[];
 
     return {
@@ -471,7 +480,7 @@ async function carica(){
       aria:serie(h,'temperature_2m',mod1),
       onda,
       ondaDir,
-      periodo,
+      periodo:periodoSerie,
       sst,
       waveAvailable:onda.some(x=>x!=null)
     };
@@ -505,12 +514,15 @@ function condizioni(d,i){
 
   const vs=(sg!=null)?(si+sg)/2:si;
   const vd=(dg!=null)?mediaAngoli(di,dg):di;
+  if(vd==null){
+    return {punti:null,errore:'direzione del vento non disponibile'};
+  }
   const raffica=gi!=null?gi:vs;
 
   const waveAvailable=d.waveAvailable;
   const oh=waveAvailable?vicino(d.onda,i):null;
   const od=waveAvailable?vicino(d.ondaDir,i):null;
-  const per=waveAvailable?vicino(d.periodo,i):null;
+  const periodoCorrente=waveAvailable?vicino(d.periodo,i):null;
   const sst=vicino(d.sst,i);
 
   let fv=1,fo=1;
@@ -582,7 +594,7 @@ function condizioni(d,i){
 
   return {
     vs,vd,raffica,ventoEff,onda:oh,ondaEff,ondaDir:od,
-    frontale,periodo,sst,aria:vicino(d.aria,i),aff, waveAvailable,
+    frontale,periodo:periodoCorrente,sst,aria:vicino(d.aria,i),aff, waveAvailable,
     punti:Math.max(0,Math.min(100,Math.round(punti)))
   };
 }
@@ -990,6 +1002,7 @@ async function aggiornaDati(){
     disegna();
 
   }catch(e){
+    console.error('Errore caricamento previsioni:',e);
     const rete=/load failed|failed to fetch|networkerror|cors/i.test(e.message);
     const sandbox=window.self!==window.top;
 
