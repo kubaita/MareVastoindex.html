@@ -125,6 +125,7 @@ small{font-size:12px}
 
   <div class="metadati">
     <span id="aggiornato">Dati in caricamento…</span>
+    <span id="contatore"></span>
     <span>Previsione locale · Europe/Rome</span>
   </div>
 
@@ -251,22 +252,43 @@ function json(url){
   });
 }
 
-/* Riallinea le risposte ai punti richiesti confrontando le coordinate
-   restituite dall'API. Così i dati di una spiaggia non possono finire
-   su un'altra: se non c'è corrispondenza, quella posizione resta null. */
+/* Accoppia le risposte ai punti richiesti. Ogni risposta può servire una sola
+   spiaggia: si abbinano prima le coppie più vicine, poi le altre. Così se
+   l'API risponde in ordine diverso i dati restano attaccati alla spiaggia
+   giusta, e se una risposta manca la spiaggia scoperta resta null invece di
+   ereditare i dati della vicina. */
+function distanzaGradi(r,p){
+  if(!r||typeof r.latitude!=='number'||typeof r.longitude!=='number') return Infinity;
+  var dLat=r.latitude-p[0], dLon=(r.longitude-p[1])*Math.cos(rad(p[0]));
+  return Math.sqrt(dLat*dLat+dLon*dLon);
+}
 function riordina(risposte,punti,tolleranza){
-  if(!Array.isArray(risposte)) return punti.map(function(){return null;});
-  var tol=tolleranza||0.35;
-  return punti.map(function(p){
-    var migliore=null, dist=Infinity;
-    risposte.forEach(function(r){
-      if(!r||typeof r.latitude!=='number'||typeof r.longitude!=='number') return;
-      var dLat=r.latitude-p[0], dLon=(r.longitude-p[1])*Math.cos(rad(p[0]));
-      var d=Math.sqrt(dLat*dLat+dLon*dLon);
-      if(d<dist){ dist=d; migliore=r; }
+  if(!Array.isArray(risposte)) return punti.map(function(){ return null; });
+  var tol=tolleranza||0.4;
+
+  var coppie=[];
+  punti.forEach(function(p,i){
+    risposte.forEach(function(r,j){
+      var d=distanzaGradi(r,p);
+      if(d<=tol) coppie.push({i:i,j:j,d:d});
     });
-    return dist<=tol?migliore:null;
   });
+  coppie.sort(function(a,b){ return a.d-b.d; });
+
+  var out=punti.map(function(){ return null; });
+  var usate=risposte.map(function(){ return false; });
+  coppie.forEach(function(c){
+    if(out[c.i]===null&&!usate[c.j]){ out[c.i]=risposte[c.j]; usate[c.j]=true; }
+  });
+
+  var scambiate=out.some(function(r,i){
+    return r&&risposte[i]&&(r.latitude!==risposte[i].latitude||r.longitude!==risposte[i].longitude);
+  });
+  if(scambiate) log('risposte riagganciate per coordinate: ordine diverso da quello richiesto');
+  var scoperte=out.filter(function(r){ return r===null; }).length;
+  if(scoperte) log(scoperte+' località senza risposta corrispondente');
+
+  return out;
 }
 
 var PARAMI_COMUNI='&timezone=Europe%2FRome&forecast_days='+GIORNI;
@@ -365,13 +387,13 @@ function mappaTempo(times){
   return m;
 }
 /* Legge un valore all'ora richiesta; se manca, cerca l'ora più vicina
-   entro sei ore nella stessa serie. Mai in un'altra spiaggia. */
+   entro tre ore nella stessa serie della stessa spiaggia. */
 function valore(arr,mappa,iso){
   if(!arr||!arr.length||!mappa) return null;
   var i=mappa[iso];
   if(i==null) return null;
   if(arr[i]!=null) return arr[i];
-  for(var k=1;k<=6;k++){
+  for(var k=1;k<=3;k++){
     if(arr[i-k]!=null) return arr[i-k];
     if(arr[i+k]!=null) return arr[i+k];
   }
@@ -745,7 +767,8 @@ function fraseNaturale(d,c,giorno){
   var mattina=mediaFascia(d,giorno,8,13);
   var pomeriggio=mediaFascia(d,giorno,14,20);
   var frasi=[];
-  var quando=(giorno===elencoGiorni()[0])?'Oggi':etichettaGiorno(giorno).toLowerCase();
+  var quando=(giorno===elencoGiorni()[0])?'Oggi':etichettaGiorno(giorno);
+  quando=quando.charAt(0).toUpperCase()+quando.slice(1).toLowerCase();
 
   if(c.punti==null){
     return 'Per questa spiaggia mancano i dati necessari a formulare un consiglio.';
@@ -1029,6 +1052,41 @@ function aggiornaDati(){
   });
 }
 
+/* ---------------- contatore di visite ----------------
+   Servizio Abacus (abacus.jasoncameron.dev): contatore gratuito, senza
+   registrazione e senza cookie. Registra solo un numero: nessun dato
+   personale, nessun profilo, niente che identifichi chi si collega.
+   Una visita per sessione del browser: ricaricare la pagina non la conta
+   di nuovo. Se il servizio non risponde, lo spazio resta vuoto e il resto
+   della pagina funziona comunque.
+   Per azzerare o separare i conteggi basta cambiare CONTATORE_CHIAVE.     */
+var CONTATORE_SPAZIO='kubaita.github.io';
+var CONTATORE_CHIAVE='sottovento-vasto';
+
+function contatoreVisite(){
+  var el=document.getElementById('contatore');
+  if(!el) return;
+
+  var giaContata=false;
+  try{ giaContata=window.sessionStorage.getItem('sv-visita')==='1'; }catch(e){}
+
+  var azione=giaContata?'get':'hit';
+  fetch('https://abacus.jasoncameron.dev/'+azione+'/'+CONTATORE_SPAZIO+'/'+CONTATORE_CHIAVE)
+    .then(function(r){
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    })
+    .then(function(j){
+      if(!j||typeof j.value!=='number') throw new Error('risposta inattesa');
+      try{ window.sessionStorage.setItem('sv-visita','1'); }catch(e){}
+      el.innerHTML='&#128101; '+j.value.toLocaleString('it-IT')+' visite';
+    })
+    .catch(function(e){
+      log('contatore visite: '+((e&&e.message)||'non raggiungibile'));
+      el.innerHTML='';
+    });
+}
+
 var bottoniModo=document.querySelectorAll('[data-modo]');
 for(var bm=0;bm<bottoniModo.length;bm++){
   (function(b){
@@ -1044,6 +1102,7 @@ for(var bm=0;bm<bottoniModo.length;bm++){
 document.getElementById('aggiorna').onclick=function(){ aggiornaDati(); };
 
 aggiornaDati();
+contatoreVisite();
 </script>
 </body>
 </html>
