@@ -164,36 +164,65 @@ small{font-size:12px}
             v = quanto resta del vento, o = quanto resta dell'onda
    =================================================================== */
 var SPIAGGE = [
+  { id:'torresinello', nome:'Torre Sinello', zona:'foce del Sinello, riserva', lat:42.1889, lon:14.6542,
+    facing:45, riparo:[{da:100,a:165,v:.9,o:.7}],
+    nota:'Piccola spiaggia naturale ai piedi della costa rocciosa.' },
+
   { id:'mottagrossa', nome:'Mottagrossa', zona:'riserva, ciottoli', lat:42.1829, lon:14.6728,
     facing:35, riparo:[{da:120,a:205,v:.85,o:.6}],
-    nota:'Lunga e solitaria, aperta al quadrante nord-est.' },
-  { id:'aderci', nome:'Punta Aderci', zona:'sotto il promontorio', lat:42.1796, lon:14.6857,
+    nota:'Lunga spiaggia di ciottoli, selvaggia e immersa nella Riserva di Punta Aderci.' },
+
+  { id:'aderci', nome:'Punta Aderci', zona:'riserva, ciottoli', lat:42.1796, lon:14.6857,
     facing:20, riparo:[{da:80,a:210,v:.6,o:.3}],
-    nota:'Il promontorio la copre da levante e scirocco; con la tramontana è la prima a saltare.' },
-  { id:'libertini', nome:'Libertini', zona:'riserva, sabbia e ghiaia', lat:42.1772, lon:14.6915,
+    nota:'Piccola spiaggia di ciottoli ai piedi del promontorio, nel cuore della Riserva.' },
+
+  { id:'libertini', nome:'Libertini', zona:'riserva, ciottoli e sabbia', lat:42.1772, lon:14.6915,
     facing:22, riparo:[{da:95,a:215,v:.65,o:.35},{da:230,a:330,v:.75,o:.5}],
-    nota:'Incassata fra Aderci e Punta Penna: il tratto più riparato dai venti meridionali.' },
-  { id:'pennuccia', nome:'Punta Penna', zona:'la Pennuccia, sabbia dorata', lat:42.1740, lon:14.7033,
+    nota:'Spiaggia naturale tra Punta Aderci e Punta Penna, con ciottoli e fondale sabbioso.' },
+
+  { id:'pennuccia', nome:'Punta Penna', zona:'sabbia e dune', lat:42.1740, lon:14.7033,
     facing:25, riparo:[{da:75,a:230,v:.55,o:.25}],
-    nota:'Guarda a nord: con scirocco e garbino resta uno specchio, con grecale no.' },
-  { id:'canale', nome:'La Canale', zona:'fra due trabocchi', lat:42.1392, lon:14.7186,
+    nota:'Ampia e lunga spiaggia sabbiosa, con dune e fondale che degrada dolcemente.' },
+
+  { id:'saraceno', nome:'Grotta del Saraceno', zona:'costa rocciosa, calette', lat:42.1543, lon:14.7180,
+    facing:72, riparo:[{da:300,a:10,v:.85,o:.5}],
+    nota:'Costa rocciosa con piccole calette e tratti di ciottoli.' },
+
+  { id:'vignola', nome:'Vignola', zona:'costa rocciosa, calette', lat:42.1429, lon:14.7188,
+    facing:78, riparo:[{da:310,a:15,v:.88,o:.6}],
+    nota:'Tratto di costa rocciosa con piccole calette, ciottoli e sabbia.' },
+
+  { id:'canale', nome:'La Canale', zona:'caletta fra i trabocchi', lat:42.1392, lon:14.7186,
     facing:80, riparo:[{da:315,a:15,v:.9,o:.6}],
-    nota:'Ciottoli e scogli affioranti, poco parcheggio: meglio la mattina presto.' },
-  { id:'sannicola', nome:'San Nicola', zona:'ciottoli, la più ampia', lat:42.1321, lon:14.7200,
+    nota:'Piccola caletta di ciottoli e scogli, tra i caratteristici trabocchi.' },
+
+  { id:'sannicola', nome:'San Nicola', zona:'ciottoli e scogli', lat:42.1321, lon:14.7200,
     facing:82, riparo:[{da:315,a:15,v:.92,o:.65}],
-    nota:'Esposta ai venti da nord: dà il meglio con libeccio e garbino.' },
-  { id:'casarza', nome:'Casarza', zona:'sotto la falesia', lat:42.1186, lon:14.7201,
+    nota:'Costa di ciottoli, con scogli affioranti.' },
+
+  { id:'torricella', nome:'Torricella', zona:'caletta raccolta', lat:42.1276, lon:14.7219,
+    facing:86, riparo:[{da:312,a:18,v:.9,o:.6}],
+    nota:'Piccola spiaggia raccolta lungo la costa rocciosa.' },
+
+  { id:'casarza', nome:'Casarza', zona:'caletta di ciottoli e sabbia', lat:42.1186, lon:14.7201,
     facing:90, riparo:[{da:310,a:20,v:.88,o:.6}],
-    nota:'Un po\u2019 più riparata delle vicine, fondale che scende subito.' },
-  { id:'trave', nome:'Trave', zona:'trabocco e ciottoli', lat:42.1122, lon:14.7196,
+    nota:'Piccola caletta di ciottoli e sabbia, raccolta e dall\u2019ambiente naturale.' },
+
+  { id:'trave', nome:'Trave', zona:'scogli e trabocco', lat:42.1122, lon:14.7196,
     facing:88, riparo:[{da:310,a:20,v:.9,o:.65}],
-    nota:'Piccola e appartata, nessun servizio: acqua limpida nelle giornate ferme.' },
-  { id:'vastomarina', nome:'Vasto Marina', zona:'sabbia, stabilimenti', lat:42.1007, lon:14.7216,
+    nota:'Minuscola spiaggia di sabbia e ciottoli, tra scogli e il trabocco.' },
+
+  { id:'sirenetta', nome:'La Sirenetta', zona:'caletta fra gli scogli', lat:42.1072, lon:14.7176,
+    facing:75, riparo:[{da:305,a:12,v:.9,o:.65}],
+    nota:'Piccola caletta raccolta tra scogli e ciottoli.' },
+
+  { id:'vastomarina', nome:'Vasto Marina', zona:'sabbia, servizi', lat:42.1007, lon:14.7216,
     facing:62, riparo:[{da:300,a:10,v:.92,o:.7}],
-    nota:'Fondale dolce e tutti i servizi: la scelta comoda quando il mare è ovunque uguale.' },
-  { id:'sansalvo', nome:'San Salvo Marina', zona:'sabbia, a sud', lat:42.0744, lon:14.7667,
+    nota:'Ampio arenile sabbioso con fondale basso e numerosi servizi.' },
+
+  { id:'sansalvo', nome:'San Salvo Marina', zona:'sabbia, servizi', lat:42.0744, lon:14.7667,
     facing:45, riparo:[{da:300,a:350,v:.95,o:.85}],
-    nota:'Orientata a nord-est: regge il maestrale, soffre il grecale.' }
+    nota:'Ampio arenile sabbioso con fondale basso e numerosi servizi.' }
 ];
 
 /* ---------------- utilità di base ---------------- */
