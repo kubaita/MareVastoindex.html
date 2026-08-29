@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Previsioni di vento, onde e mare per scegliere la spiaggia più riparata sulla costa di Vasto.">
-<title>Sottovento Vasto — dove fa mare calmo oggi</title>
+<meta name="description" content="Dove conviene andare al mare oggi sulla costa di Vasto: vento, onde e condizioni spiaggia per spiaggia.">
+<title>Sottovento Vasto — dove conviene andare al mare oggi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
@@ -23,7 +23,8 @@ body{background:var(--carta);color:var(--inchiostro);font-family:"Barlow",system
 h1{font-family:"Instrument Serif";font-weight:400;font-size:40px;line-height:1.02;margin:0 0 8px;letter-spacing:-.01em}
 h1 em{font-style:italic;color:var(--mare)}
 .sottotitolo{margin:0 0 18px;color:var(--tenue);font-size:15px;max-width:46ch}
-.comandi{background:var(--foglio);border:1px solid var(--linea);border-radius:var(--raggio);padding:12px;margin-bottom:16px}
+
+.comandi{background:var(--foglio);border:1px solid var(--linea);border-radius:var(--raggio);padding:12px;margin-bottom:14px}
 .riga{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .riga+.riga{margin-top:10px}
 .etichetta{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--tenue);width:100%;margin-bottom:-4px}
@@ -39,26 +40,41 @@ button:disabled{cursor:wait;opacity:.65}
 .ora b{display:block;font-weight:600;font-size:15px}
 .ora span{display:block;height:3px;margin-top:4px;border-radius:2px;background:var(--linea)}
 .ora[aria-pressed="true"]{border-color:var(--inchiostro);box-shadow:inset 0 0 0 1px var(--inchiostro)}
+
 .metadati{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--tenue);font-family:"Barlow Semi Condensed";font-size:12px;margin:0 2px 12px}
 .avviso{background:#F6EFD9;border:1px solid #D9C89A;border-radius:var(--raggio);padding:8px 10px;margin-bottom:12px;font-size:14px}
 .errore{color:var(--agitato);font-family:"Barlow";font-size:15px}
-.consiglio{background:var(--foglio);border:1px solid var(--inchiostro);border-radius:var(--raggio);padding:13px 14px;margin-bottom:12px}
-.consiglio-etichetta{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--tenue);margin-bottom:2px}
-.consiglio-riga{display:flex;justify-content:space-between;align-items:end;gap:12px}
-.consiglio-nome{font-family:"Instrument Serif";font-size:25px;line-height:1.05}
-.consiglio-punteggio{font-family:"Barlow Semi Condensed";font-size:30px;font-weight:600;line-height:1}
-.consiglio-dettagli{margin:4px 0 0;color:var(--tenue);font-size:14px}
-.consiglio-momento{margin:8px 0 0;padding-top:8px;border-top:1px solid var(--linea);color:var(--tenue);font-family:"Barlow Semi Condensed";font-size:13px}
-.consiglio-momento b{color:var(--inchiostro)}
+.stato{padding:24px 4px;color:var(--tenue);font-family:"Instrument Serif";font-size:20px}
+
+/* ---- sezione "dove andare" ---- */
+.oggi{background:var(--foglio);border:2px solid var(--inchiostro);border-radius:var(--raggio);padding:15px 16px;margin-bottom:14px}
+.oggi-titolo{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--mare);margin:0 0 8px}
+.oggi-riga{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.oggi-nome{font-family:"Instrument Serif";font-size:30px;line-height:1.05;margin:0}
+.oggi-nome .medaglia{font-size:22px;margin-right:6px}
+.oggi-sotto{color:var(--tenue);font-size:15px;margin:2px 0 0}
+.oggi-punteggio{font-family:"Barlow Semi Condensed";font-weight:600;font-size:38px;line-height:.95;text-align:right;white-space:nowrap}
+.oggi-punteggio small{display:block;font-size:12px;font-weight:500;color:var(--tenue);letter-spacing:.08em}
+.oggi-meteo{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-family:"Barlow Semi Condensed";font-size:15px}
+.oggi-meteo b{font-weight:600}
+.oggi-fascia{margin:11px 0 0;padding-top:10px;border-top:1px solid var(--linea);font-size:15px}
+.oggi-fascia b{font-weight:600}
+.andamento{display:flex;gap:10px;flex-wrap:wrap;margin-top:9px;font-family:"Barlow Semi Condensed";font-size:13px;color:var(--tenue)}
+.andamento div{text-align:center;min-width:34px}
+.andamento .pallino{display:block;width:13px;height:13px;border-radius:50%;margin:2px auto 0}
+.frase{margin:11px 0 0;padding-top:10px;border-top:1px solid var(--linea);font-family:"Instrument Serif";font-size:19px;line-height:1.35}
+.astri{margin:9px 0 0;font-family:"Barlow Semi Condensed";font-size:13px;color:var(--tenue)}
+
+.titolo-sezione{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--tenue);margin:18px 0 8px}
 .classifica{display:flex;flex-direction:column;gap:10px}
 .scheda{background:var(--foglio);border:1px solid var(--linea);border-radius:var(--raggio);padding:12px;display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:start}
-.scheda.top{border-color:var(--inchiostro);box-shadow:0 1px 0 var(--inchiostro)}
-.scheda-topline{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.1em;font-size:10px;color:var(--mare);margin:0 0 2px}
+.scheda.top{border-color:var(--inchiostro)}
 .nome{font-family:"Instrument Serif";font-size:22px;line-height:1.1;margin:0}
 .zona{font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--tenue);margin:0}
 .verdetto{margin:6px 0 0;font-size:15px}
 .dati{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-family:"Barlow Semi Condensed";font-size:14px;color:var(--tenue)}
 .dati b{color:var(--inchiostro);font-weight:600}
+.dati .allerta b{color:var(--agitato)}
 .punteggio{float:right;font-family:"Barlow Semi Condensed";font-weight:600;font-size:26px;line-height:1;padding-left:10px}
 .barra{display:flex;gap:2px;margin-top:9px}
 .barra i{flex:1;height:16px;border-radius:1px;background:var(--linea)}
@@ -66,15 +82,21 @@ button:disabled{cursor:wait;opacity:.65}
 .legenda-barra{font-family:"Barlow Semi Condensed";font-size:11px;color:var(--tenue);display:flex;justify-content:space-between;margin-top:2px;letter-spacing:.06em}
 .nota{margin:8px 0 0;color:var(--tenue);font-family:"Instrument Serif";font-size:16px}
 .affid{font-family:"Barlow Semi Condensed";font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--linea);border-radius:2px;padding:1px 5px;color:var(--tenue)}
-.legenda{margin-top:14px;padding:9px 10px;border-top:1px solid var(--linea);color:var(--tenue);font-size:12px;font-family:"Barlow Semi Condensed"}
+.dettagli{margin-top:16px}
+.dettagli summary{cursor:pointer;font-family:"Barlow Semi Condensed";text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--tenue)}
+.legenda{margin-top:12px;padding:9px 0;border-top:1px solid var(--linea);color:var(--tenue);font-size:12px;font-family:"Barlow Semi Condensed"}
 .legenda span{margin-right:14px}
 .legenda .vento-dot{color:var(--vento)}
 .legenda .onda-dot{color:var(--onda)}
-footer{margin-top:26px;font-size:13px;color:var(--tenue);border-top:1px solid var(--linea);padding-top:12px}
+footer{margin-top:22px;font-size:13px;color:var(--tenue);border-top:1px solid var(--linea);padding-top:12px}
 footer p{margin:0 0 6px}
-.stato{padding:24px 4px;color:var(--tenue);font-family:"Instrument Serif";font-size:20px}
 small{font-size:12px}
-@media (max-width:420px){h1{font-size:32px}.scheda{grid-template-columns:64px 1fr;gap:10px}.consiglio-riga{align-items:center}}
+@media (max-width:420px){
+  h1{font-size:32px}
+  .scheda{grid-template-columns:64px 1fr;gap:10px}
+  .oggi-nome{font-size:25px}
+  .oggi-punteggio{font-size:32px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -89,7 +111,7 @@ small{font-size:12px}
       <span class="etichetta">Cosa vuoi fare</span>
       <button class="tab" data-modo="bagno" aria-pressed="true">Bagno tranquillo</button>
       <button class="tab" data-modo="vento" aria-pressed="false">Vento e onda</button>
-      <button class="aggiorna" id="aggiorna" type="button" title="Ricarica le previsioni"><span class="icona">↻</span> Aggiorna</button>
+      <button class="aggiorna" id="aggiorna" type="button" title="Ricarica le previsioni"><span class="icona">&#8635;</span> Aggiorna</button>
     </div>
     <div class="riga">
       <span class="etichetta">Giorno</span>
@@ -107,34 +129,40 @@ small{font-size:12px}
   </div>
 
   <div id="avvisi"></div>
-  <div id="stato" class="stato">Carico vento, onde e temperatura del mare…</div>
+  <div id="stato" class="stato">Carico vento, onde e condizioni del mare…</div>
+
   <div id="consiglio"></div>
+
+  <p class="titolo-sezione" id="titolo-classifica" style="display:none">Tutte le spiagge a quest'ora</p>
   <div class="classifica" id="classifica"></div>
 
-  <div class="legenda">
-    <span class="vento-dot">→ vento</span>
-    <span class="onda-dot">╌ onda</span>
-    <span>— esposizione della spiaggia</span>
-    <span>Il blu indica il mare.</span>
-  </div>
-
-  <footer>
-    <p><b>Dati:</b> Open-Meteo — modelli ICON (DWD) e GFS (NOAA) per il vento, modello d'onda per altezza e direzione.</p>
-    <p><b>Concordanza modelli:</b> indica quanto ICON e GFS concordano su direzione e intensità del vento a quell'ora; non è una garanzia sull'esattezza della previsione.</p>
-    <p><b>Punteggio bagno:</b> parte da 100 e penalizza vento verso la spiaggia, onda e raffiche; riconosce un piccolo vantaggio al vento da terra. L'onda pesa una volta sola, modulata da quanto arriva frontale.</p>
-    <p><b>Punteggio vento:</b> premia un vento sostenuto e una componente utile rispetto all'esposizione della spiaggia.</p>
-    <p>Esposizioni e ripari sono stime geografiche: si correggono nell'elenco <code>SPIAGGE</code> in cima allo script.</p>
-  </footer>
+  <details class="dettagli">
+    <summary>Come leggere questa pagina</summary>
+    <div class="legenda">
+      <span class="vento-dot">&rarr; da dove soffia il vento</span>
+      <span class="onda-dot">&#9482; da dove arriva l'onda</span>
+      <span>&mdash; il lato aperto della spiaggia</span>
+      <span>Il blu è il mare, il beige è la terra.</span>
+    </div>
+    <footer>
+      <p><b>Il punteggio</b> è un indice di convenienza, non una previsione esatta: mette insieme quanto il vento soffia verso la spiaggia, quanto è forte, quanto sono irregolari le raffiche, quanto è alta l'onda, da dove arriva e quanto è lunga. Il massimo che ciascuna voce può togliere è fissato in partenza (vento verso riva 30, onda 25, forza del vento 15, raffiche 10, tipo di onda 10) così nessun singolo dato può da solo affossare o salvare una spiaggia.</p>
+      <p><b>Concordanza modelli:</b> quanto ICON (servizio meteo tedesco) e GFS (americano) prevedono la stessa cosa a quell'ora. Alta significa che i due sono d'accordo, non che la previsione sia certamente giusta.</p>
+      <p><b>Dati:</b> Open-Meteo. Vento da ICON e GFS; onde, periodo e temperatura dell'acqua dal modello d'onda; temperatura, percepita, UV, pioggia, nuvole, alba e tramonto dalla previsione generale.</p>
+      <p>Esposizioni e ripari delle spiagge sono stime geografiche: si correggono nell'elenco <code>SPIAGGE</code> in cima allo script.</p>
+    </footer>
+  </details>
 </div>
 
 <script>
+"use strict";
+
 /* ===================================================================
-   SPIAGGE — coordinate reali, da nord a sud
+   SPIAGGE — invariate: coordinate, esposizione e ripari come prima
    facing : direzione verso cui guarda il mare davanti alla spiaggia
-   riparo : settori di provenienza schermati da promontori o moli
+   riparo : settori di PROVENIENZA schermati da promontori o moli
             v = quanto resta del vento, o = quanto resta dell'onda
    =================================================================== */
-const SPIAGGE = [
+var SPIAGGE = [
   { id:'mottagrossa', nome:'Mottagrossa', zona:'riserva, ciottoli', lat:42.1829, lon:14.6728,
     facing:35, riparo:[{da:120,a:205,v:.85,o:.6}],
     nota:'Lunga e solitaria, aperta al quadrante nord-est.' },
@@ -167,187 +195,430 @@ const SPIAGGE = [
     nota:'Orientata a nord-est: regge il maestrale, soffre il grecale.' }
 ];
 
-/* ---------------- utilità ---------------- */
-const rad=d=>d*Math.PI/180;
-const norm=d=>((d%360)+360)%360;
-const diffAng=(a,b)=>{const d=Math.abs(norm(a)-norm(b));return d>180?360-d:d;};
-const inSettore=(dir,da,a)=>{dir=norm(dir);da=norm(da);a=norm(a);return da<=a?(dir>=da&&dir<=a):(dir>=da||dir<=a);};
-const NOMI=[[0,'tramontana'],[45,'grecale'],[90,'levante'],[135,'scirocco'],[180,'ostro'],[225,'libeccio'],[270,'ponente'],[315,'maestrale']];
-function nomeVento(d){let b=NOMI[0],bd=999;for(const n of NOMI){const s=diffAng(d,n[0]);if(s<bd){bd=s;b=n;}}return b[1];}
-const CARD=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSO','SO','OSO','O','ONO','NO','NNO'];
-const sigla=d=>CARD[Math.round(norm(d)/22.5)%16];
+/* ---------------- utilità di base ---------------- */
+function rad(d){ return d*Math.PI/180; }
+function norm(d){ return ((d%360)+360)%360; }
+function diffAng(a,b){ var d=Math.abs(norm(a)-norm(b)); return d>180?360-d:d; }
+function clamp(x,min,max){ return x<min?min:(x>max?max:x); }
+function inSettore(dir,da,a){
+  dir=norm(dir); da=norm(da); a=norm(a);
+  return da<=a ? (dir>=da&&dir<=a) : (dir>=da||dir<=a);
+}
+var NOMI=[[0,'tramontana'],[45,'grecale'],[90,'levante'],[135,'scirocco'],
+          [180,'ostro'],[225,'libeccio'],[270,'ponente'],[315,'maestrale']];
+function nomeVento(d){
+  var best=NOMI[0], bd=999;
+  for(var k=0;k<NOMI.length;k++){
+    var s=diffAng(d,NOMI[k][0]);
+    if(s<bd){ bd=s; best=NOMI[k]; }
+  }
+  return best[1];
+}
+var CARD=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSO','SO','OSO','O','ONO','NO','NNO'];
+function sigla(d){ return CARD[Math.round(norm(d)/22.5)%16]; }
 
 /* punto al largo (~3 km nella direzione di esposizione) per il moto ondoso */
-SPIAGGE.forEach(s=>{
+SPIAGGE.forEach(function(s){
   s.mare=[ +(s.lat+0.027*Math.cos(rad(s.facing))).toFixed(4),
            +(s.lon+0.036*Math.sin(rad(s.facing))).toFixed(4) ];
 });
 
-const GIORNI=3;
-const lats=SPIAGGE.map(s=>s.lat).join(',');
-const lons=SPIAGGE.map(s=>s.lon).join(',');
-const mlats=SPIAGGE.map(s=>s.mare[0]).join(',');
-const mlons=SPIAGGE.map(s=>s.mare[1]).join(',');
+var GIORNI=3;
+var lats=SPIAGGE.map(function(s){return s.lat;}).join(',');
+var lons=SPIAGGE.map(function(s){return s.lon;}).join(',');
+var mlats=SPIAGGE.map(function(s){return s.mare[0];}).join(',');
+var mlons=SPIAGGE.map(function(s){return s.mare[1];}).join(',');
+var puntiSpiaggia=SPIAGGE.map(function(s){return [s.lat,s.lon];});
+var puntiMare=SPIAGGE.map(function(s){return s.mare;});
 
-/* ---------------- rete, con ripieghi ---------------- */
-const DIAGNOSI=[];
-function log(m){DIAGNOSI.push(m);}
-function avviso(t){document.getElementById('avvisi').insertAdjacentHTML('beforeend','<div class="avviso">'+t+'</div>');}
-
-async function json(url){
-  const r=await fetch(url,{cache:'no-store'});
-  let j=null;
-  try{ j=await r.json(); }catch(e){ throw new Error('risposta non leggibile (HTTP '+r.status+')'); }
-  if(!r.ok||(j&&j.error)) throw new Error((j&&j.reason)||('HTTP '+r.status));
-  if(!j) throw new Error('risposta vuota dal servizio');
-  return Array.isArray(j)?j:[j];
+/* ---------------- diagnostica ---------------- */
+var DIAGNOSI=[];
+function log(m){ DIAGNOSI.push(m); }
+function avviso(t){
+  document.getElementById('avvisi').insertAdjacentHTML('beforeend','<div class="avviso">'+t+'</div>');
 }
 
-const paramiVento='&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m,temperature_2m'
-  +'&wind_speed_unit=kmh&timezone=Europe%2FRome&forecast_days='+GIORNI;
-const urlVento=(la,lo,mod)=>'https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo
-  +paramiVento+(mod?'&models='+mod:'');
-
-async function caricaVento(){
-  try{ return {r:await json(urlVento(lats,lons,'icon_seamless,gfs_seamless')),due:true}; }
-  catch(e){ log('vento 2 modelli: '+e.message); }
-  try{ return {r:await Promise.all(SPIAGGE.map(async s=>(await json(urlVento(s.lat,s.lon,'icon_seamless,gfs_seamless')))[0])),due:true}; }
-  catch(e){ log('vento per località: '+e.message); }
-  try{ return {r:await json(urlVento(lats,lons,null)),due:false}; }
-  catch(e){ log('vento modello unico: '+e.message); }
-  return {r:await Promise.all(SPIAGGE.map(async s=>(await json(urlVento(s.lat,s.lon,null)))[0])),due:false};
+/* ---------------- rete ---------------- */
+function json(url){
+  return fetch(url,{cache:'no-store'}).then(function(r){
+    return r.json().catch(function(){
+      throw new Error('risposta non leggibile (HTTP '+r.status+')');
+    }).then(function(j){
+      if(!r.ok||(j&&j.error)) throw new Error((j&&j.reason)||('HTTP '+r.status));
+      if(!j) throw new Error('risposta vuota dal servizio');
+      return Array.isArray(j)?j:[j];
+    });
+  });
 }
 
-const urlMare=(la,lo,sst)=>'https://marine-api.open-meteo.com/v1/marine?latitude='+la+'&longitude='+lo
-  +'&hourly=wave_height,wave_direction,wave_period'+(sst?',sea_surface_temperature':'')
-  +'&timezone=Europe%2FRome&forecast_days='+GIORNI;
-
-async function caricaMare(){
-  try{ return {r:await json(urlMare(mlats,mlons,true)),sst:true}; }
-  catch(e){ log('onde+temperatura: '+e.message); }
-  try{ return {r:await json(urlMare(mlats,mlons,false)),sst:false}; }
-  catch(e){ log('onde: '+e.message); }
-  try{ return {r:await Promise.all(SPIAGGE.map(async s=>(await json(urlMare(s.mare[0],s.mare[1],false)))[0])),sst:false}; }
-  catch(e){ log('onde per località: '+e.message); return null; }
+/* Riallinea le risposte ai punti richiesti confrontando le coordinate
+   restituite dall'API. Così i dati di una spiaggia non possono finire
+   su un'altra: se non c'è corrispondenza, quella posizione resta null. */
+function riordina(risposte,punti,tolleranza){
+  if(!Array.isArray(risposte)) return punti.map(function(){return null;});
+  var tol=tolleranza||0.35;
+  return punti.map(function(p){
+    var migliore=null, dist=Infinity;
+    risposte.forEach(function(r){
+      if(!r||typeof r.latitude!=='number'||typeof r.longitude!=='number') return;
+      var dLat=r.latitude-p[0], dLon=(r.longitude-p[1])*Math.cos(rad(p[0]));
+      var d=Math.sqrt(dLat*dLat+dLon*dLon);
+      if(d<dist){ dist=d; migliore=r; }
+    });
+    return dist<=tol?migliore:null;
+  });
 }
 
-/* ---------------- dati ---------------- */
-let DATI=null, ORE=[], idxOra=0, modo='bagno';
-let dueModelli=true, conOnde=false, ultimoAggiornamento=null;
+var PARAMI_COMUNI='&timezone=Europe%2FRome&forecast_days='+GIORNI;
+var ORARIE_VENTO='&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m,temperature_2m'
+  +'&wind_speed_unit=kmh';
+
+function urlVento(la,lo,mod){
+  return 'https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo
+    +ORARIE_VENTO+PARAMI_COMUNI+(mod?'&models='+mod:'');
+}
+
+/* Vento: prima i due modelli insieme (servono al confronto), poi ripieghi. */
+function caricaVento(){
+  var due='icon_seamless,gfs_seamless';
+  return json(urlVento(lats,lons,due))
+    .then(function(r){ return {r:r,due:true}; })
+    .catch(function(e){
+      log('vento 2 modelli, chiamata unica: '+e.message);
+      return Promise.all(SPIAGGE.map(function(s){
+        return json(urlVento(s.lat,s.lon,due)).then(function(x){return x[0];});
+      })).then(function(r){ return {r:r,due:true}; });
+    })
+    .catch(function(e){
+      log('vento 2 modelli, per località: '+e.message);
+      return json(urlVento(lats,lons,null)).then(function(r){ return {r:r,due:false}; });
+    })
+    .catch(function(e){
+      log('vento modello unico, chiamata unica: '+e.message);
+      return Promise.all(SPIAGGE.map(function(s){
+        return json(urlVento(s.lat,s.lon,null)).then(function(x){return x[0];});
+      })).then(function(r){ return {r:r,due:false}; });
+    });
+}
+
+/* Contorno meteo: UV, pioggia, nuvole, percepita, alba e tramonto.
+   Va chiesto SENZA il parametro models: con due modelli l'API restituisce
+   solo le variabili che entrambi calcolano, e l'UV non è tra quelle. */
+var SET_AMBIENTE=[
+  '&hourly=apparent_temperature,uv_index,precipitation_probability,precipitation,cloud_cover'
+    +'&daily=sunrise,sunset,daylight_duration',
+  '&hourly=apparent_temperature,precipitation_probability,precipitation,cloud_cover'
+    +'&daily=sunrise,sunset,daylight_duration',
+  '&hourly=apparent_temperature,precipitation,cloud_cover'
+];
+function urlAmbiente(la,lo,set){
+  return 'https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+set+PARAMI_COMUNI;
+}
+function caricaAmbiente(i){
+  i=i||0;
+  if(i>=SET_AMBIENTE.length) return Promise.resolve(null);
+  return json(urlAmbiente(lats,lons,SET_AMBIENTE[i]))
+    .catch(function(e){
+      log('contorno meteo (set '+(i+1)+'): '+e.message);
+      return caricaAmbiente(i+1);
+    });
+}
+
+function urlMare(la,lo,sst){
+  return 'https://marine-api.open-meteo.com/v1/marine?latitude='+la+'&longitude='+lo
+    +'&hourly=wave_height,wave_direction,wave_period'+(sst?',sea_surface_temperature':'')
+    +PARAMI_COMUNI;
+}
+function caricaMare(){
+  return json(urlMare(mlats,mlons,true)).then(function(r){ return {r:r,sst:true}; })
+    .catch(function(e){
+      log('onde e temperatura acqua: '+e.message);
+      return json(urlMare(mlats,mlons,false)).then(function(r){ return {r:r,sst:false}; });
+    })
+    .catch(function(e){
+      log('onde: '+e.message);
+      return Promise.all(SPIAGGE.map(function(s){
+        return json(urlMare(s.mare[0],s.mare[1],false)).then(function(x){return x[0];});
+      })).then(function(r){ return {r:r,sst:false}; });
+    })
+    .catch(function(e){ log('onde per località: '+e.message); return null; });
+}
+
+/* ---------------- stato ---------------- */
+var DATI=null, ORE=[], idxOra=0, modo='bagno';
+var dueModelli=true, conOnde=false, conAmbiente=false, conAstri=false;
+var ultimoAggiornamento=null;
 
 function serie(h,campo,mod){
-  if(mod&&Array.isArray(h[campo+'_'+mod])) return h[campo+'_'+mod];
+  if(!h) return [];
+  if(mod && Array.isArray(h[campo+'_'+mod])) return h[campo+'_'+mod];
   return Array.isArray(h[campo])?h[campo]:[];
 }
-function vicino(arr,i){
-  if(!arr||!arr.length) return null;
+function tuttiNulli(a){
+  if(!a||!a.length) return true;
+  for(var i=0;i<a.length;i++) if(a[i]!=null) return false;
+  return true;
+}
+function mappaTempo(times){
+  var m={};
+  if(Array.isArray(times)) times.forEach(function(t,i){ m[t]=i; });
+  return m;
+}
+/* Legge un valore all'ora richiesta; se manca, cerca l'ora più vicina
+   entro sei ore nella stessa serie. Mai in un'altra spiaggia. */
+function valore(arr,mappa,iso){
+  if(!arr||!arr.length||!mappa) return null;
+  var i=mappa[iso];
+  if(i==null) return null;
   if(arr[i]!=null) return arr[i];
-  for(let k=1;k<24;k++){ if(arr[i-k]!=null) return arr[i-k]; if(arr[i+k]!=null) return arr[i+k]; }
+  for(var k=1;k<=6;k++){
+    if(arr[i-k]!=null) return arr[i-k];
+    if(arr[i+k]!=null) return arr[i+k];
+  }
   return null;
 }
 
-async function carica(){
+function carica(){
   DIAGNOSI.length=0;
+  var risultati={};
 
-  const v=await caricaVento();
-  if(!v||!Array.isArray(v.r)||!v.r.length) throw new Error('nessun dato di vento ricevuto');
-  dueModelli=v.due;
+  return caricaVento().then(function(v){
+    if(!v||!Array.isArray(v.r)||!v.r.length) throw new Error('nessun dato di vento ricevuto');
+    risultati.vento=v;
+    return caricaAmbiente();
+  }).then(function(a){
+    risultati.ambiente=a;
+    return caricaMare();
+  }).then(function(m){
+    risultati.mare=m;
 
-  const m=await caricaMare();
+    var v=risultati.vento;
+    var vAllineati=riordina(v.r,puntiSpiaggia);
+    var aAllineati=risultati.ambiente?riordina(risultati.ambiente,puntiSpiaggia):null;
+    var mAllineati=(risultati.mare&&risultati.mare.r)?riordina(risultati.mare.r,puntiMare,0.5):null;
 
-  ORE=(v.r[0]&&v.r[0].hourly&&v.r[0].hourly.time)||[];
-  if(!ORE.length) throw new Error('il servizio meteo non ha restituito le ore di previsione');
+    var riferimento=null;
+    for(var k=0;k<vAllineati.length;k++){
+      if(vAllineati[k]&&vAllineati[k].hourly&&vAllineati[k].hourly.time){ riferimento=vAllineati[k]; break; }
+    }
+    if(!riferimento) throw new Error('il servizio meteo non ha restituito le ore di previsione');
+    ORE=riferimento.hourly.time;
 
-  const mod1=dueModelli?'icon_seamless':null;
-  const mod2=dueModelli?'gfs_seamless':null;
+    var mod1=v.due?'icon_seamless':null;
+    var mod2=v.due?'gfs_seamless':null;
+    var qualcunoDue=false;
 
-  DATI=SPIAGGE.map((s,i)=>{
-    const h=(v.r[i]&&v.r[i].hourly)?v.r[i].hourly:(v.r[0].hourly||{});
-    const mh=(m&&m.r&&m.r[i]&&m.r[i].hourly)?m.r[i].hourly:null;
+    DATI=SPIAGGE.map(function(s,i){
+      var rv=vAllineati[i];
+      var hv=rv?rv.hourly:null;
+      var ra=aAllineati?aAllineati[i]:null;
+      var ha=ra?ra.hourly:null;
+      var da=ra?ra.daily:null;
+      var rm=mAllineati?mAllineati[i]:null;
+      var hm=rm?rm.hourly:null;
 
-    const onda=(mh&&mh.wave_height)||[];
-    const ondaDir=(mh&&mh.wave_direction)||[];
-    const periodo=(mh&&mh.wave_period)||[];
-    const sst=(mh&&m.sst&&mh.sea_surface_temperature)||[];
+      var icon={s:serie(hv,'wind_speed_10m',mod1),d:serie(hv,'wind_direction_10m',mod1),g:serie(hv,'wind_gusts_10m',mod1)};
+      var gfs =v.due?{s:serie(hv,'wind_speed_10m',mod2),d:serie(hv,'wind_direction_10m',mod2),g:serie(hv,'wind_gusts_10m',mod2)}:null;
 
-    return {
-      spiaggia:s,
-      vi:{s:serie(h,'wind_speed_10m',mod1),d:serie(h,'wind_direction_10m',mod1),g:serie(h,'wind_gusts_10m',mod1)},
-      vg:dueModelli?{s:serie(h,'wind_speed_10m',mod2),d:serie(h,'wind_direction_10m',mod2)}:null,
-      aria:serie(h,'temperature_2m',mod1),
-      onda, ondaDir, periodo, sst,
-      conOnda:onda.some(x=>x!=null)
-    };
+      /* se uno dei due modelli non ha dati per questa spiaggia, si usa l'altro */
+      var iconVuoto=tuttiNulli(icon.s)||tuttiNulli(icon.d);
+      var gfsVuoto=!gfs||tuttiNulli(gfs.s)||tuttiNulli(gfs.d);
+      if(iconVuoto&&!gfsVuoto){ icon=gfs; gfs=null; }
+      else if(gfsVuoto){ gfs=null; }
+      if(gfs) qualcunoDue=true;
+
+      var onda=hm?(hm.wave_height||[]):[];
+      var ondaDir=hm?(hm.wave_direction||[]):[];
+      var periodo=hm?(hm.wave_period||[]):[];
+      var acqua=(hm&&risultati.mare&&risultati.mare.sst)?(hm.sea_surface_temperature||[]):[];
+
+      var astri=null;
+      if(da&&Array.isArray(da.time)){
+        astri={};
+        da.time.forEach(function(g,k){
+          astri[g]={
+            alba:da.sunrise?da.sunrise[k]:null,
+            tramonto:da.sunset?da.sunset[k]:null,
+            luce:da.daylight_duration?da.daylight_duration[k]:null
+          };
+        });
+      }
+
+      return {
+        spiaggia:s,
+        tVento:mappaTempo(hv?hv.time:null),
+        tAmb:mappaTempo(ha?ha.time:null),
+        tMare:mappaTempo(hm?hm.time:null),
+        icon:icon,
+        gfs:gfs,
+        aria:serie(hv,'temperature_2m',mod1),
+        ariaGfs:v.due?serie(hv,'temperature_2m',mod2):[],
+        percepita:ha?(ha.apparent_temperature||[]):[],
+        uv:ha?(ha.uv_index||[]):[],
+        pioggiaProb:ha?(ha.precipitation_probability||[]):[],
+        pioggiaMm:ha?(ha.precipitation||[]):[],
+        nuvole:ha?(ha.cloud_cover||[]):[],
+        onda:onda, ondaDir:ondaDir, periodo:periodo, acqua:acqua,
+        astri:astri,
+        conOnda:!tuttiNulli(onda),
+        conVento:!tuttiNulli(icon.s)&&!tuttiNulli(icon.d)
+      };
+    });
+
+    dueModelli=qualcunoDue;
+    conOnde=DATI.some(function(d){ return d.conOnda; });
+    conAmbiente=DATI.some(function(d){ return !tuttiNulli(d.percepita)||!tuttiNulli(d.nuvole); });
+    conAstri=DATI.some(function(d){ return !!d.astri; });
+
+    if(!DATI.some(function(d){ return d.conVento; }))
+      throw new Error('nessuna spiaggia ha ricevuto dati di vento utilizzabili');
+
+    ultimoAggiornamento=new Date();
   });
-
-  conOnde=DATI.some(d=>d.conOnda);
-  ultimoAggiornamento=new Date();
 }
 
 /* ---------------- calcolo ---------------- */
 function mediaAngoli(a,b){
-  if(a==null||b==null) return null;
-  const x=Math.cos(rad(a))+Math.cos(rad(b)), y=Math.sin(rad(a))+Math.sin(rad(b));
+  if(a==null) return b==null?null:b;
+  if(b==null) return a;
+  var x=Math.cos(rad(a))+Math.cos(rad(b)), y=Math.sin(rad(a))+Math.sin(rad(b));
   return norm(Math.atan2(y,x)*180/Math.PI);
 }
 
-function condizioni(d,i){
-  const s=d.spiaggia;
-  const si=vicino(d.vi.s,i), di=vicino(d.vi.d,i), gi=vicino(d.vi.g,i);
-  if(si==null||di==null) return {spiaggia:s,punti:null,errore:'dati vento non disponibili'};
+/*
+  CONVENZIONE, valida per tutto il file:
+  wind_direction_10m e wave_direction di Open-Meteo indicano la direzione
+  DA CUI arriva il vento (o l'onda). facing indica la direzione VERSO CUI
+  guarda la spiaggia, cioè dove sta il mare aperto.
+  Quindi: vento che proviene da una direzione vicina a facing = vento che
+  arriva dal mare verso la riva (in faccia a chi fa il bagno).
+  cos(provenienza - facing) vale +1 quando è pienamente in faccia,
+  -1 quando soffia da terra, 0 quando è di lato.
+*/
+function condizioni(d,iso){
+  var s=d.spiaggia;
+  if(!d.conVento) return {spiaggia:s,punti:null,errore:'dati vento non disponibili'};
 
-  const sg=d.vg?vicino(d.vg.s,i):null;
-  const dg=d.vg?vicino(d.vg.d,i):null;
+  var vi=valore(d.icon.s,d.tVento,iso);
+  var di=valore(d.icon.d,d.tVento,iso);
+  var gi=valore(d.icon.g,d.tVento,iso);
+  if(vi==null||di==null) return {spiaggia:s,punti:null,errore:'dati vento non disponibili'};
 
-  const vs=(sg!=null)?(si+sg)/2:si;
-  const vd=(dg!=null)?mediaAngoli(di,dg):di;
-  if(vd==null) return {spiaggia:s,punti:null,errore:'direzione del vento non disponibile'};
+  var vg=d.gfs?valore(d.gfs.s,d.tVento,iso):null;
+  var dg=d.gfs?valore(d.gfs.d,d.tVento,iso):null;
+  var gg=d.gfs?valore(d.gfs.g,d.tVento,iso):null;
 
-  const raffica=(gi!=null)?gi:vs;
+  var vs=(vg!=null)?(vi+vg)/2:vi;
+  var vd=(dg!=null)?mediaAngoli(di,dg):di;
+  var raffica=(gi!=null&&gg!=null)?(gi+gg)/2:(gi!=null?gi:(gg!=null?gg:vs));
+  if(raffica<vs) raffica=vs;
 
-  const conOnda=d.conOnda;
-  const oh=conOnda?vicino(d.onda,i):null;
-  const od=conOnda?vicino(d.ondaDir,i):null;
-  const periodo=conOnda?vicino(d.periodo,i):null;
-  const sst=vicino(d.sst,i);
+  var oh=d.conOnda?valore(d.onda,d.tMare,iso):null;
+  var od=d.conOnda?valore(d.ondaDir,d.tMare,iso):null;
+  var periodo=d.conOnda?valore(d.periodo,d.tMare,iso):null;
+  var acqua=valore(d.acqua,d.tMare,iso);
 
-  let fv=1,fo=1;
-  for(const r of (s.riparo||[])){
+  var aria=valore(d.aria,d.tVento,iso);
+  if(aria==null) aria=valore(d.ariaGfs,d.tVento,iso);
+  var percepita=valore(d.percepita,d.tAmb,iso);
+  var uv=valore(d.uv,d.tAmb,iso);
+  var pioggiaProb=valore(d.pioggiaProb,d.tAmb,iso);
+  var pioggiaMm=valore(d.pioggiaMm,d.tAmb,iso);
+  var nuvole=valore(d.nuvole,d.tAmb,iso);
+
+  /* schermature di promontori e moli, per settore di provenienza */
+  var fv=1, fo=1;
+  (s.riparo||[]).forEach(function(r){
     if(inSettore(vd,r.da,r.a)) fv=Math.min(fv,r.v);
     if(od!=null&&inSettore(od,r.da,r.a)) fo=Math.min(fo,r.o);
+  });
+
+  var ventoEff=vs*fv;
+  var raffEff=raffica*fv;
+  var comp=ventoEff*Math.cos(rad(vd-s.facing));   /* >0 dal mare, <0 da terra */
+  var ondaEff=(oh!=null)?oh*fo:null;
+  var frontalita=(od!=null)?Math.max(0,Math.cos(rad(od-s.facing))):0;
+  var frontale=(ondaEff!=null)?ondaEff*frontalita:null;
+
+  /* concordanza fra i due modelli, in percentuale */
+  var concordanza=null;
+  if(vg!=null&&dg!=null){
+    var pesoDir=clamp(Math.max(vi,vg)/12,0,1);  /* con vento quasi nullo la direzione conta poco */
+    var scartoDir=(diffAng(di,dg)/180)*60*pesoDir;
+    var scartoVel=clamp(Math.abs(vi-vg)/20,0,1)*40;
+    concordanza=Math.round(clamp(100-scartoDir-scartoVel,0,100));
   }
 
-  const ventoEff=vs*fv, raffEff=raffica*fv;
-  const comp=ventoEff*Math.cos(rad(vd-s.facing));      // >0 dal mare, <0 da terra
-  const ondaEff=(oh!=null)?oh*fo:null;
-  const frontFactor=(od!=null)?Math.max(0,Math.cos(rad(od-s.facing))):0;
-  const frontale=(ondaEff!=null)?ondaEff*frontFactor:null;
-
-  let aff='n.d.';
-  if(sg!=null&&dg!=null){
-    const dd=diffAng(di,dg), ds=Math.abs(si-sg);
-    aff=(dd>60||ds>15)?'bassa':(dd>30||ds>8)?'media':'alta';
-  }
-
-  let punti;
+  /*
+    PUNTEGGIO BAGNO — indice di convenienza, non previsione esatta.
+    Tetti massimi fissati in partenza, così nessuna voce domina:
+      vento verso riva  30   onda (altezza, modulata dalla direzione)  25
+      forza del vento   15   raffiche irregolari  10   tipo di onda  10
+    Restano 10 punti di margine, più un piccolo bonus per il vento da terra.
+  */
+  var punti;
   if(modo==='bagno'){
-    const onshore=Math.max(0,comp);
-    const offshore=Math.min(Math.max(0,-comp),20);
-    const penalitaOnda=(ondaEff!=null)?ondaEff*(16+28*frontFactor):0;
-    punti=100-onshore*2.5-penalitaOnda-Math.max(0,raffEff-30)*0.55+offshore*0.25;
+    var pVentoRiva=30*clamp(Math.max(0,comp)/25,0,1);
+    var pForza=15*clamp(ventoEff/40,0,1);
+    var pRaffiche=10*clamp((raffEff-ventoEff-8)/18,0,1);
+    var pOnda=0, pTipoOnda=0;
+    if(ondaEff!=null){
+      pOnda=25*clamp(ondaEff/1.0,0,1)*(0.45+0.55*frontalita);
+      if(periodo!=null){
+        /* a parità di altezza, l'onda lunga frange più forte sulla riva */
+        pTipoOnda=10*clamp((periodo-3.5)/4.5,0,1)*clamp(ondaEff/0.4,0,1)*frontalita;
+      }
+    }
+    var bonusTerra=6*clamp(Math.max(0,-comp)/18,0,1);
+    punti=100-pVentoRiva-pForza-pRaffiche-pOnda-pTipoOnda+bonusTerra;
   }else{
-    const forza=100-Math.abs(vs-24)*3.4;
-    const laterale=Math.abs(Math.sin(rad(vd-s.facing)));
+    /* vento e onda: si premia vento sostenuto attorno ai 24 km/h e onda presente */
+    var forza=100-Math.abs(vs-24)*3.4;
+    var laterale=Math.abs(Math.sin(rad(vd-s.facing)));
     punti=forza*0.72+Math.max(0,comp)*0.9+laterale*12+((oh!=null)?Math.min(oh,1.2)*18:0);
     if(vs<8) punti-=25;
   }
 
-  return {spiaggia:s,vs,vd,raffica,ventoEff,comp,onda:oh,ondaEff,ondaDir:od,frontale,
-          periodo,sst,aria:vicino(d.aria,i),aff,conOnda,
-          punti:Math.max(0,Math.min(100,Math.round(punti)))};
+  return {
+    spiaggia:s, vs:vs, vd:vd, raffica:raffica, ventoEff:ventoEff, raffEff:raffEff, comp:comp,
+    onda:oh, ondaEff:ondaEff, ondaDir:od, periodo:periodo, frontale:frontale, frontalita:frontalita,
+    acqua:acqua, aria:aria, percepita:percepita, uv:uv,
+    pioggiaProb:pioggiaProb, pioggiaMm:pioggiaMm, nuvole:nuvole,
+    concordanza:concordanza, conOnda:d.conOnda,
+    punti:Math.round(clamp(punti,0,100))
+  };
 }
 
-const colore=p=>p==null?'var(--linea)':(p>=70?'var(--piatto)':p>=45?'var(--mosso)':'var(--agitato)');
+function colore(p){
+  if(p==null) return 'var(--linea)';
+  return p>=70?'var(--piatto)':(p>=45?'var(--mosso)':'var(--agitato)');
+}
+function orientamentoVento(c){
+  return c.comp>3?'in faccia':(c.comp<-3?'da terra':'di lato');
+}
+function statoMare(c){
+  if(c.ondaEff==null) return null;
+  if(c.ondaEff<0.15) return 'praticamente piatto';
+  if(c.ondaEff<0.35) return 'quasi calmo';
+  if(c.ondaEff<0.7) return 'poco mosso';
+  if(c.ondaEff<1.2) return 'mosso';
+  return 'agitato';
+}
+function livelloUV(u){
+  if(u==null) return null;
+  if(u<3) return 'basso';
+  if(u<6) return 'moderato';
+  if(u<8) return 'alto';
+  if(u<11) return 'molto alto';
+  return 'estremo';
+}
+function testoConcordanza(v){
+  if(v==null) return 'n.d.';
+  return v>=75?'alta':(v>=50?'media':'bassa');
+}
+function raffichaForte(c){
+  return (c.raffEff-c.ventoEff)>15;
+}
 
 function verdetto(c){
   if(c.punti==null) return ['Dati mancanti','non è possibile calcolare il punteggio'];
@@ -360,274 +631,417 @@ function verdetto(c){
     return ['Poco adatta','vento debole o mal orientato per questa esposizione'];
   }
 
-  const dir=c.comp>3?'in faccia':c.comp<-3?'da terra':'di lato';
-  const onda=(c.ondaEff!=null)?', onda '+c.ondaEff.toFixed(1)+' m':'';
+  var dir=orientamentoVento(c);
+  var mare=statoMare(c);
+  var coda=nomeVento(c.vd)+' '+dir+(mare?', mare '+mare:'');
 
-  if(c.punti>=80) return ['Acqua piatta',nomeVento(c.vd)+' '+dir+onda];
-  if(c.punti>=65) return ['Quasi ferma',nomeVento(c.vd)+' '+dir+' a '+Math.round(c.ventoEff)+' km/h'];
-  if(c.punti>=45) return ['Increspata',nomeVento(c.vd)+' '+dir+onda];
-  if(c.punti>=25) return ['Mossa',((c.frontale!=null)?'onda frontale '+c.frontale.toFixed(1)+' m con ':'')+nomeVento(c.vd)];
-  return ['Da evitare',nomeVento(c.vd)+' teso in faccia'+onda];
+  if(c.punti>=80) return ['Acqua piatta',coda];
+  if(c.punti>=65) return ['Quasi ferma',coda+' a '+Math.round(c.ventoEff)+' km/h'];
+  if(c.punti>=45) return ['Increspata',coda];
+  if(c.punti>=25) return ['Mossa',coda];
+  return ['Da evitare',nomeVento(c.vd)+' teso '+dir+(mare?', mare '+mare:'')];
 }
 
-/* ---------------- quadrante ---------------- */
+/* ---------------- quadrante ----------------
+   La freccia rossa parte dal bordo, nel punto di provenienza del vento,
+   e punta verso il centro: mostra dove va a finire il vento.        */
 function quadrante(s,c){
-  const R=30,cx=34,cy=34,f=s.facing;
-  const P=(a,r)=>[cx+r*Math.sin(rad(a)),cy-r*Math.cos(rad(a))];
-  const arco=(da,a,r)=>{const[x1,y1]=P(da,r),[x2,y2]=P(a,r);
-    return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z`;};
-
-  const[wx1,wy1]=P(c.vd,R+1),[wx2,wy2]=P(c.vd,13);
-  let onda='';
-  if(c.ondaEff!=null&&c.ondaEff>=0.15&&c.ondaDir!=null){
-    const[ox1,oy1]=P(c.ondaDir,R-4),[ox2,oy2]=P(c.ondaDir,19);
-    onda=`<line x1="${ox1.toFixed(1)}" y1="${oy1.toFixed(1)}" x2="${ox2.toFixed(1)}" y2="${oy2.toFixed(1)}" stroke="var(--onda)" stroke-width="1.6" stroke-dasharray="2 2"/>`;
+  var R=30,cx=34,cy=34,f=s.facing;
+  function P(a,r){ return [cx+r*Math.sin(rad(a)), cy-r*Math.cos(rad(a))]; }
+  function arco(da,a,r){
+    var p1=P(da,r), p2=P(a,r);
+    return 'M '+cx+' '+cy+' L '+p1[0]+' '+p1[1]+' A '+r+' '+r+' 0 0 1 '+p2[0]+' '+p2[1]+' Z';
   }
-  const[bx1,by1]=P(f-90,R),[bx2,by2]=P(f+90,R);
-
-  return `<svg viewBox="0 0 68 78" width="100%" aria-hidden="true">
-    <defs><marker id="p${s.id}" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="var(--vento)"/></marker></defs>
-    <circle cx="${cx}" cy="${cy}" r="${R}" fill="var(--terra)" stroke="var(--linea)"/>
-    <path d="${arco(f-90,f+90,R)}" fill="var(--acqua)"/>
-    <path d="${arco(f-90,f+90,R)}" fill="none" stroke="var(--linea)"/>
-    <line x1="${bx1.toFixed(1)}" y1="${by1.toFixed(1)}" x2="${bx2.toFixed(1)}" y2="${by2.toFixed(1)}" stroke="var(--inchiostro)" stroke-width="1.6"/>
-    ${onda}
-    <line x1="${wx1.toFixed(1)}" y1="${wy1.toFixed(1)}" x2="${wx2.toFixed(1)}" y2="${wy2.toFixed(1)}" stroke="var(--vento)" stroke-width="2.4" marker-end="url(#p${s.id})"/>
-    <circle cx="${cx}" cy="${cy}" r="2" fill="var(--inchiostro)"/>
-    <text x="${cx}" y="7" text-anchor="middle" font-size="8" fill="var(--tenue)" font-family="Barlow Semi Condensed">N</text>
-    <text x="${cx}" y="76" text-anchor="middle" font-size="10" fill="var(--tenue)" font-family="Barlow Semi Condensed">guarda a ${sigla(f)}</text>
-  </svg>`;
+  var w1=P(c.vd,R+1), w2=P(c.vd,13);
+  var onda='';
+  if(c.ondaEff!=null&&c.ondaEff>=0.15&&c.ondaDir!=null){
+    var o1=P(c.ondaDir,R-4), o2=P(c.ondaDir,19);
+    onda='<line x1="'+o1[0].toFixed(1)+'" y1="'+o1[1].toFixed(1)+'" x2="'+o2[0].toFixed(1)+'" y2="'+o2[1].toFixed(1)
+      +'" stroke="var(--onda)" stroke-width="1.6" stroke-dasharray="2 2"/>';
+  }
+  var b1=P(f-90,R), b2=P(f+90,R);
+  return '<svg viewBox="0 0 68 78" width="100%" aria-hidden="true">'
+    +'<defs><marker id="p'+s.id+'" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">'
+    +'<path d="M0,0 L6,3 L0,6 z" fill="var(--vento)"/></marker></defs>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--terra)" stroke="var(--linea)"/>'
+    +'<path d="'+arco(f-90,f+90,R)+'" fill="var(--acqua)"/>'
+    +'<path d="'+arco(f-90,f+90,R)+'" fill="none" stroke="var(--linea)"/>'
+    +'<line x1="'+b1[0].toFixed(1)+'" y1="'+b1[1].toFixed(1)+'" x2="'+b2[0].toFixed(1)+'" y2="'+b2[1].toFixed(1)
+      +'" stroke="var(--inchiostro)" stroke-width="1.6"/>'
+    +onda
+    +'<line x1="'+w1[0].toFixed(1)+'" y1="'+w1[1].toFixed(1)+'" x2="'+w2[0].toFixed(1)+'" y2="'+w2[1].toFixed(1)
+      +'" stroke="var(--vento)" stroke-width="2.4" marker-end="url(#p'+s.id+')"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="2" fill="var(--inchiostro)"/>'
+    +'<text x="'+cx+'" y="7" text-anchor="middle" font-size="8" fill="var(--tenue)" font-family="Barlow Semi Condensed">N</text>'
+    +'<text x="'+cx+'" y="76" text-anchor="middle" font-size="10" fill="var(--tenue)" font-family="Barlow Semi Condensed">guarda a '+sigla(f)+'</text>'
+    +'</svg>';
 }
 
-/* ---------------- interfaccia ---------------- */
-const nomiGiorno=['Oggi','Domani','Dopodomani'];
-function elencoGiorni(){ return [...new Set(ORE.map(t=>t.slice(0,10)))].slice(0,GIORNI); }
+/* ---------------- giorni e ore ---------------- */
+var nomiGiorno=['Oggi','Domani','Dopodomani'];
+function elencoGiorni(){
+  var visti=[], out=[];
+  ORE.forEach(function(t){
+    var g=t.slice(0,10);
+    if(visti.indexOf(g)<0){ visti.push(g); out.push(g); }
+  });
+  return out.slice(0,GIORNI);
+}
 function etichettaGiorno(g){
-  const n=elencoGiorni().indexOf(g);
-  return nomiGiorno[n]||g.slice(8,10)+'/'+g.slice(5,7);
+  var n=elencoGiorni().indexOf(g);
+  return nomiGiorno[n]||(g.slice(8,10)+'/'+g.slice(5,7));
 }
 function giornoSelezionato(){ return ORE[idxOra]?ORE[idxOra].slice(0,10):null; }
-function aggiornaMetadati(){
-  const el=document.getElementById('aggiornato');
-  el.textContent=ultimoAggiornamento
-    ? 'Dati aggiornati alle '+ultimoAggiornamento.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})
-    : 'Dati in caricamento…';
+function oreDelGiorno(giorno,da,a){
+  var out=[];
+  ORE.forEach(function(t,i){
+    if(t.slice(0,10)!==giorno) return;
+    var h=+t.slice(11,13);
+    if(h<da||h>a) return;
+    out.push({iso:t,i:i,h:h});
+  });
+  return out;
 }
+function soloOra(iso){ return iso?iso.slice(11,16):'--:--'; }
+
+/* ---------------- sezione "dove andare" ---------------- */
+function miglioreFascia(d,giorno){
+  var ore=oreDelGiorno(giorno,8,20);
+  var punteggi=ore.map(function(o){ return condizioni(d,o.iso).punti; });
+  var migliore=null;
+  for(var lung=4;lung>=2;lung--){
+    for(var i=0;i+lung<=ore.length;i++){
+      var somma=0, valida=true;
+      for(var k=0;k<lung;k++){
+        if(punteggi[i+k]==null){ valida=false; break; }
+        somma+=punteggi[i+k];
+      }
+      if(!valida) continue;
+      var media=somma/lung;
+      if(!migliore||media>migliore.media+0.5){
+        migliore={media:media,da:ore[i].h,a:Math.min(21,ore[i+lung-1].h+1)};
+      }
+    }
+    if(migliore) break;
+  }
+  return migliore;
+}
+function andamentoGiornata(d,giorno){
+  return oreDelGiorno(giorno,8,20)
+    .filter(function(o){ return o.h%2===0; })
+    .map(function(o){ return {h:o.h,punti:condizioni(d,o.iso).punti}; });
+}
+function mediaFascia(d,giorno,da,a){
+  var v=oreDelGiorno(giorno,da,a)
+    .map(function(o){ return condizioni(d,o.iso).punti; })
+    .filter(function(p){ return p!=null; });
+  if(!v.length) return null;
+  return v.reduce(function(x,y){return x+y;},0)/v.length;
+}
+
+function fraseNaturale(d,c,giorno){
+  var s=d.spiaggia;
+  var nome=s.nome;
+  var mattina=mediaFascia(d,giorno,8,13);
+  var pomeriggio=mediaFascia(d,giorno,14,20);
+  var frasi=[];
+  var quando=(giorno===elencoGiorni()[0])?'Oggi':etichettaGiorno(giorno).toLowerCase();
+
+  if(c.punti==null){
+    return 'Per questa spiaggia mancano i dati necessari a formulare un consiglio.';
+  }
+
+  if(c.punti<40){
+    frasi.push(quando+' nessuna spiaggia è davvero in condizioni favorevoli: la meno peggio è '
+      +nome+', con '+nomeVento(c.vd)+' '+orientamentoVento(c)
+      +(statoMare(c)?' e mare '+statoMare(c):'')+'.');
+  }else{
+    var giudizio=c.punti>=78?'condizioni molto buone':(c.punti>=62?'buone condizioni':'condizioni discrete');
+    frasi.push(quando+' conviene '+nome+': '+giudizio+', con '+nomeVento(c.vd)+' '
+      +orientamentoVento(c)+' a '+Math.round(c.ventoEff)+' km/h'
+      +(statoMare(c)?' e mare '+statoMare(c):'')+'.');
+  }
+
+  if(mattina!=null&&pomeriggio!=null){
+    var salto=pomeriggio-mattina;
+    if(salto<-12) frasi.push('Le condizioni peggiorano nel pomeriggio: meglio andarci in mattinata.');
+    else if(salto>12) frasi.push('Il mare si calma nel pomeriggio, quando la situazione migliora.');
+    else frasi.push('La situazione resta simile per tutta la giornata.');
+  }
+
+  if(c.pioggiaProb!=null&&c.pioggiaProb>=40){
+    frasi.push('C\u2019è però il '+Math.round(c.pioggiaProb)+'% di probabilità di pioggia.');
+  }
+  if(raffichaForte(c)){
+    frasi.push('Attenzione alle raffiche, che arrivano a '+Math.round(c.raffEff)+' km/h.');
+  }
+  return frasi.join(' ');
+}
+
+function disegnaConsiglio(lista){
+  var box=document.getElementById('consiglio');
+  if(!lista.length){ box.innerHTML=''; return; }
+
+  /* Una spiaggia senza dati d'onda non paga la penalità del mare e finirebbe
+     in testa per un vantaggio fittizio: se esistono spiagge con dati completi,
+     il consiglio si sceglie fra quelle. */
+  var complete=lista.filter(function(r){ return r.c.onda!=null; });
+  var scelta=(complete.length?complete:lista)[0];
+
+  var d=scelta.d, c=scelta.c, s=d.spiaggia;
+  var giorno=giornoSelezionato();
+  var fascia=miglioreFascia(d,giorno);
+  var andamento=andamentoGiornata(d,giorno);
+
+  var meteo=[];
+  if(c.aria!=null){
+    meteo.push('&#127777; <b>'+Math.round(c.aria)+' °C</b>'
+      +((c.percepita!=null&&Math.abs(c.percepita-c.aria)>=1)?' percepita '+Math.round(c.percepita)+' °C':''));
+  }
+  meteo.push('&#127754; acqua <b>'+((c.acqua!=null)?Math.round(c.acqua)+' °C':'n.d.')+'</b>');
+  meteo.push('&#128168; vento <b>'+Math.round(c.ventoEff)+' km/h</b> '+sigla(c.vd)
+    +' · raffiche <b>'+Math.round(c.raffEff)+'</b>');
+  if(c.uv!=null) meteo.push('&#9728; UV <b>'+Math.round(c.uv)+'</b> · '+livelloUV(c.uv));
+  if(c.pioggiaProb!=null||c.pioggiaMm!=null){
+    meteo.push('&#127783; pioggia <b>'+((c.pioggiaProb!=null)?Math.round(c.pioggiaProb)+'%':'n.d.')+'</b>'
+      +((c.pioggiaMm!=null)?' · '+c.pioggiaMm.toFixed(1).replace('.',',')+' mm':''));
+  }
+  if(c.nuvole!=null) meteo.push('&#9729; nuvole <b>'+Math.round(c.nuvole)+'%</b>');
+
+  var astriHtml='';
+  if(d.astri&&d.astri[giorno]){
+    var a=d.astri[giorno];
+    var luce='';
+    if(a.luce!=null){
+      var ore=Math.floor(a.luce/3600), min=Math.round((a.luce%3600)/60);
+      luce=' · '+ore+' h '+String(min).padStart(2,'0')+' di luce';
+    }
+    astriHtml='<p class="astri">&#127749; Alba '+soloOra(a.alba)+' · Tramonto '+soloOra(a.tramonto)+luce+'</p>';
+  }
+
+  var andamentoHtml='';
+  if(andamento.length){
+    andamentoHtml='<div class="andamento">'+andamento.map(function(p){
+      return '<div>'+String(p.h).padStart(2,'0')
+        +'<span class="pallino" style="background:'+colore(p.punti)+'"></span></div>';
+    }).join('')+'</div>';
+  }
+
+  box.innerHTML=
+    '<section class="oggi" aria-label="Dove andare">'
+    +'<p class="oggi-titolo">&#127958; Dove andare '+(giorno?etichettaGiorno(giorno).toLowerCase():'')+'</p>'
+    +'<div class="oggi-riga">'
+      +'<div>'
+        +'<p class="oggi-nome"><span class="medaglia">&#129351;</span>'+s.nome+'</p>'
+        +'<p class="oggi-sotto">'+verdetto(c)[0]+' · '+s.zona+'</p>'
+      +'</div>'
+      +'<div class="oggi-punteggio" style="color:'+colore(c.punti)+'">'+c.punti+'<small>su 100</small></div>'
+    +'</div>'
+    +'<div class="oggi-meteo">'+meteo.join('')+'</div>'
+    +(fascia?'<p class="oggi-fascia">Momento migliore: <b>'
+        +String(fascia.da).padStart(2,'0')+':00–'+String(fascia.a).padStart(2,'0')+':00</b></p>':'')
+    +andamentoHtml
+    +'<p class="frase">'+fraseNaturale(d,c,giorno)+'</p>'
+    +astriHtml
+    +'</section>';
+}
+
+/* ---------------- classifica ---------------- */
 function costruisciGiorni(){
-  const box=document.getElementById('giorni'); box.innerHTML='';
-  elencoGiorni().forEach(g=>{
-    const b=document.createElement('button');
-    b.className='tab'; b.dataset.giorno=g; b.textContent=etichettaGiorno(g);
-    b.onclick=()=>{
-      const t=ORE.findIndex(x=>x.startsWith(g)&&+x.slice(11,13)>=9);
-      idxOra=t>=0?t:ORE.findIndex(x=>x.startsWith(g));
-      disegna();
+  var box=document.getElementById('giorni');
+  box.innerHTML='';
+  elencoGiorni().forEach(function(g){
+    var b=document.createElement('button');
+    b.className='tab';
+    b.setAttribute('data-giorno',g);
+    b.textContent=etichettaGiorno(g);
+    b.onclick=function(){
+      var t=-1;
+      for(var i=0;i<ORE.length;i++){
+        if(ORE[i].slice(0,10)===g&&+ORE[i].slice(11,13)>=9){ t=i; break; }
+      }
+      if(t<0){ for(var k=0;k<ORE.length;k++){ if(ORE[k].slice(0,10)===g){ t=k; break; } } }
+      if(t>=0){ idxOra=t; disegna(); }
     };
     box.appendChild(b);
   });
 }
 function costruisciOre(){
-  const box=document.getElementById('ore'); box.innerHTML='';
-  const giorno=giornoSelezionato(); if(!giorno) return;
-  ORE.forEach((t,i)=>{
-    if(!t.startsWith(giorno)) return;
-    const h=+t.slice(11,13); if(h<6||h>21) return;
-    const b=document.createElement('button');
-    b.className='ora'; b.setAttribute('aria-pressed',i===idxOra);
-    const valori=DATI.map(d=>condizioni(d,i).punti).filter(v=>v!=null);
-    const max=valori.length?Math.max(...valori):null;
-    b.innerHTML=`<b>${String(h).padStart(2,'0')}</b><span style="background:${colore(max)}"></span>`;
-    b.onclick=()=>{ idxOra=i; disegna(); };
+  var box=document.getElementById('ore');
+  box.innerHTML='';
+  var giorno=giornoSelezionato();
+  if(!giorno) return;
+  oreDelGiorno(giorno,6,21).forEach(function(o){
+    var b=document.createElement('button');
+    b.className='ora';
+    b.setAttribute('aria-pressed',o.i===idxOra);
+    var valori=DATI.map(function(d){ return condizioni(d,o.iso).punti; })
+                   .filter(function(v){ return v!=null; });
+    var max=valori.length?Math.max.apply(null,valori):null;
+    b.innerHTML='<b>'+String(o.h).padStart(2,'0')+'</b><span style="background:'+colore(max)+'"></span>';
+    b.onclick=function(){ idxOra=o.i; disegna(); };
     box.appendChild(b);
   });
-  const sel=box.querySelector('[aria-pressed="true"]');
-  if(sel) sel.scrollIntoView({block:'nearest',inline:'center'});
-  document.querySelectorAll('#giorni .tab').forEach(t=>t.setAttribute('aria-pressed',t.dataset.giorno===giorno));
+  var sel=box.querySelector('[aria-pressed="true"]');
+  if(sel&&sel.scrollIntoView) sel.scrollIntoView({block:'nearest',inline:'center'});
+  var tabs=document.querySelectorAll('#giorni .tab');
+  for(var i=0;i<tabs.length;i++){
+    tabs[i].setAttribute('aria-pressed',tabs[i].getAttribute('data-giorno')===giorno);
+  }
 }
 function barraGiornata(d){
-  const giorno=giornoSelezionato(); if(!giorno) return '';
-  let out='';
-  ORE.forEach((t,i)=>{
-    if(!t.startsWith(giorno)) return;
-    const h=+t.slice(11,13); if(h<8||h>20) return;
-    const p=condizioni(d,i).punti;
+  var giorno=giornoSelezionato();
+  if(!giorno) return '';
+  var out='';
+  oreDelGiorno(giorno,8,20).forEach(function(o){
+    var p=condizioni(d,o.iso).punti;
     out+=(p==null)
-      ? `<i title="${h}:00 — dati non disponibili"></i>`
-      : `<i class="${i===idxOra?'now':''}" style="background:${colore(p)};opacity:${0.35+p/160}" title="${h}:00 — ${p}"></i>`;
+      ? '<i title="'+o.h+':00 — dati non disponibili"></i>'
+      : '<i class="'+(o.i===idxOra?'now':'')+'" style="background:'+colore(p)
+        +';opacity:'+(0.35+p/160)+'" title="'+o.h+':00 — '+p+'"></i>';
   });
-  return `<div class="barra">${out}</div><div class="legenda-barra"><span>8</span><span>14</span><span>20</span></div>`;
+  return '<div class="barra">'+out+'</div>'
+    +'<div class="legenda-barra"><span>8</span><span>14</span><span>20</span></div>';
 }
-function momentoMigliore(){
-  const giorno=giornoSelezionato(); if(!giorno) return null;
-  let migliore=null;
-  ORE.forEach((t,i)=>{
-    if(!t.startsWith(giorno)) return;
-    const h=+t.slice(11,13); if(h<8||h>20) return;
-    DATI.forEach(d=>{
-      const c=condizioni(d,i);
-      if(c.punti==null) return;
-      if(!migliore||c.punti>migliore.c.punti) migliore={d,c,i};
-    });
-  });
-  return migliore;
-}
-function disegnaConsiglio(lista){
-  const box=document.getElementById('consiglio');
-  if(!lista.length){ box.innerHTML=''; return; }
 
-  const c=lista[0].c, s=lista[0].d.spiaggia;
-  const v=verdetto(c);
-  const giorno=giornoSelezionato();
-  const h=ORE[idxOra]?ORE[idxOra].slice(11,13):'';
-  const momento=momentoMigliore();
-
-  const momentoHtml=momento
-    ? `<div class="consiglio-momento">Momento migliore della giornata: <b>${ORE[momento.i].slice(11,13)}:00 · ${momento.d.spiaggia.nome} · ${momento.c.punti}/100</b></div>`
-    : '';
-
-  box.innerHTML=`<section class="consiglio" aria-label="Scelta migliore">
-    <div class="consiglio-etichetta">Scelta migliore alle ${h}:00 · ${giorno?etichettaGiorno(giorno):''}</div>
-    <div class="consiglio-riga">
-      <div>
-        <div class="consiglio-nome">${s.nome}</div>
-        <div class="consiglio-dettagli">${v[0]} · ${nomeVento(c.vd)} ${sigla(c.vd)} · ${Math.round(c.vs)} km/h</div>
-      </div>
-      <div class="consiglio-punteggio" style="color:${colore(c.punti)}">${c.punti}</div>
-    </div>${momentoHtml}</section>`;
-}
 function disegna(){
   if(!DATI||!ORE.length) return;
-  const lista=DATI.map(d=>({d,c:condizioni(d,idxOra)}))
-                  .filter(r=>r.c.punti!=null)
-                  .sort((a,b)=>b.c.punti-a.c.punti);
+  var iso=ORE[idxOra];
+
+  var lista=DATI.map(function(d){ return {d:d,c:condizioni(d,iso)}; })
+                .filter(function(r){ return r.c.punti!=null; })
+                .sort(function(a,b){ return b.c.punti-a.c.punti; });
 
   disegnaConsiglio(lista);
 
-  const box=document.getElementById('classifica'); box.innerHTML='';
-  lista.forEach((r,n)=>{
-    const s=r.d.spiaggia, c=r.c, v=verdetto(c);
-    const el=document.createElement('article');
+  document.getElementById('titolo-classifica').style.display=lista.length?'block':'none';
+
+  var box=document.getElementById('classifica');
+  box.innerHTML='';
+
+  lista.forEach(function(r,n){
+    var s=r.d.spiaggia, c=r.c, v=verdetto(c);
+    var el=document.createElement('article');
     el.className='scheda'+(n===0?' top':'');
-    el.innerHTML=`<div>${quadrante(s,c)}</div><div>
-      ${n===0?'<p class="scheda-topline">Migliore per questa ora</p>':''}
-      <span class="punteggio" style="color:${colore(c.punti)}">${c.punti}</span>
-      <p class="zona">${s.zona}</p>
-      <h2 class="nome">${s.nome}</h2>
-      <p class="verdetto"><b>${v[0]}.</b> ${v[1]}.</p>
-      <div class="dati">
-        <span>vento <b>${Math.round(c.vs)} km/h</b> da ${sigla(c.vd)} · ${nomeVento(c.vd)}</span>
-        <span>raffiche <b>${Math.round(c.raffica)} km/h</b></span>
-        <span>onda <b>${(c.onda!=null)?c.onda.toFixed(1)+' m':'n.d.'}</b>${(c.periodo!=null)?' · '+Math.round(c.periodo)+' s':''}</span>
-        ${(c.sst!=null)?`<span>mare <b>${c.sst.toFixed(1)}°</b></span>`:''}
-        ${(c.aria!=null)?`<span>aria <b>${Math.round(c.aria)}°</b></span>`:''}
-        <span class="affid">modelli ${c.aff}</span>
-      </div>
-      ${barraGiornata(r.d)}
-      <p class="nota">${s.nota}</p></div>`;
+
+    var dati=[];
+    dati.push('<span>vento <b>'+Math.round(c.vs)+' km/h</b> da '+sigla(c.vd)+' · '+nomeVento(c.vd)+'</span>');
+    dati.push('<span'+(raffichaForte(c)?' class="allerta"':'')+'>raffiche <b>'
+      +Math.round(c.raffica)+' km/h</b></span>');
+    dati.push('<span>onda <b>'+((c.onda!=null)?c.onda.toFixed(1)+' m':'n.d.')+'</b>'
+      +((c.periodo!=null)?' · '+Math.round(c.periodo)+' s':'')+'</span>');
+    dati.push('<span>acqua <b>'+((c.acqua!=null)?Math.round(c.acqua)+' °C':'n.d.')+'</b></span>');
+    if(c.aria!=null) dati.push('<span>aria <b>'+Math.round(c.aria)+' °C</b></span>');
+    if(c.uv!=null) dati.push('<span>UV <b>'+Math.round(c.uv)+'</b></span>');
+    dati.push('<span class="affid">concordanza '+testoConcordanza(c.concordanza)
+      +((c.concordanza!=null)?' '+c.concordanza+'%':'')+'</span>');
+    if(c.onda==null)
+      dati.push('<span class="affid">punteggio senza dati d\u2019onda</span>');
+
+    el.innerHTML='<div>'+quadrante(s,c)+'</div><div>'
+      +'<span class="punteggio" style="color:'+colore(c.punti)+'">'+c.punti+'</span>'
+      +'<p class="zona">'+s.zona+'</p>'
+      +'<h2 class="nome">'+s.nome+'</h2>'
+      +'<p class="verdetto"><b>'+v[0]+'.</b> '+v[1]+'.</p>'
+      +'<div class="dati">'+dati.join('')+'</div>'
+      +barraGiornata(r.d)
+      +'<p class="nota">'+s.nota+'</p>'
+      +'</div>';
     box.appendChild(el);
   });
 
   costruisciOre();
-  aggiornaMetadati();
+  var el=document.getElementById('aggiornato');
+  el.textContent=ultimoAggiornamento
+    ? 'Dati aggiornati alle '+ultimoAggiornamento.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})
+    : 'Dati in caricamento…';
 }
 
 function impostaOraIniziale(){
-  const n=new Date();
-  const chiave=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'
+  var n=new Date();
+  var chiave=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'
     +String(n.getDate()).padStart(2,'0')+'T'+String(n.getHours()).padStart(2,'0')+':00';
-  const i=ORE.indexOf(chiave);
+  var i=ORE.indexOf(chiave);
   idxOra=i>=0?i:0;
 }
 
 function mostraErrore(e){
-  console.error('Sottovento:',e);
-  const rete=/load failed|failed to fetch|networkerror|cors/i.test(e.message||'');
-  const sandbox=window.self!==window.top;
-  const stato=document.getElementById('stato');
+  if(window.console&&console.error) console.error('Sottovento:',e);
+  var msg=(e&&e.message)?e.message:'errore sconosciuto';
+  var rete=/load failed|failed to fetch|networkerror|cors/i.test(msg);
+  var sandbox=window.self!==window.top;
+  var stato=document.getElementById('stato');
   stato.style.display='block';
   stato.innerHTML='<span class="errore"><b>Previsioni non raggiungibili.</b><br>'
     +(rete
-      ? 'La pagina non è riuscita a uscire su internet'
-        +(sandbox?', perché sta girando dentro un\u2019anteprima che blocca le richieste esterne. Aprila in Safari o Chrome, oppure caricala online.':'. Controlla la connessione e ricarica.')
-      : (e.message||'errore sconosciuto'))
-    +'<br><br><button class="tab" id="prova" style="margin-top:6px">Vedi l\u2019interfaccia con dati di prova</button>'
+      ? ('La pagina non è riuscita a uscire su internet'
+         +(sandbox
+           ? ', perché sta girando dentro un\u2019anteprima che blocca le richieste esterne. Aprila direttamente nel browser.'
+           : '. Controlla la connessione e premi Aggiorna.'))
+      : msg)
     +'<br><br><small>Dettaglio tentativi:<br>'+(DIAGNOSI.join('<br>')||'nessuno')+'</small></span>';
-  document.getElementById('prova').onclick=modalitaProva;
 }
 
-async function aggiornaDati(){
-  const btn=document.getElementById('aggiorna');
+function aggiornaDati(){
+  var btn=document.getElementById('aggiorna');
   btn.disabled=true;
-  btn.innerHTML='<span class="icona">↻</span> Aggiorno…';
+  btn.innerHTML='<span class="icona">&#8635;</span> Aggiorno…';
 
-  const giornoPrima=giornoSelezionato();
-  const oraPrima=ORE[idxOra]?ORE[idxOra].slice(11,13):null;
+  var giornoPrima=giornoSelezionato();
+  var oraPrima=ORE[idxOra]?ORE[idxOra].slice(11,13):null;
 
-  const stato=document.getElementById('stato');
+  var stato=document.getElementById('stato');
   stato.style.display='block';
-  stato.textContent='Aggiorno vento, onde e temperatura del mare…';
+  stato.textContent='Aggiorno vento, onde e condizioni del mare…';
   document.getElementById('avvisi').innerHTML='';
 
-  try{
-    await carica();
-
-    let nuovo=-1;
-    if(giornoPrima&&oraPrima) nuovo=ORE.findIndex(t=>t.startsWith(giornoPrima)&&t.slice(11,13)===oraPrima);
+  return carica().then(function(){
+    var nuovo=-1;
+    if(giornoPrima&&oraPrima){
+      for(var i=0;i<ORE.length;i++){
+        if(ORE[i].slice(0,10)===giornoPrima&&ORE[i].slice(11,13)===oraPrima){ nuovo=i; break; }
+      }
+    }
     if(nuovo>=0) idxOra=nuovo; else impostaOraIniziale();
 
     stato.style.display='none';
 
-    if(!dueModelli) avviso('È disponibile un solo modello di vento: la concordanza tra modelli non è calcolabile.');
-    if(!conOnde) avviso('Il modello d\u2019onda non è raggiungibile: il punteggio tiene conto del solo vento.');
-    else if(DATI.some(d=>!d.conOnda)) avviso('Per alcune località le onde non sono disponibili: in quei casi il dato resta n.d. e non viene sostituito con quello di un\u2019altra spiaggia.');
+    if(!dueModelli)
+      avviso('È disponibile un solo modello di vento: la concordanza fra ICON e GFS non è calcolabile.');
+    if(!conOnde)
+      avviso('Il modello d\u2019onda non risponde: il punteggio tiene conto del solo vento e l\u2019onda resta n.d.');
+    else if(DATI.some(function(d){ return !d.conOnda; }))
+      avviso('Per alcune spiagge le onde non sono disponibili: restano n.d. e non vengono sostituite con quelle di un\u2019altra spiaggia.');
+    if(!conAmbiente)
+      avviso('Temperatura percepita, UV, pioggia e nuvole non sono disponibili in questo momento.');
+    if(!conAstri)
+      avviso('Alba e tramonto non sono disponibili in questo momento.');
+    if(DATI.some(function(d){ return !d.conVento; }))
+      avviso('Per alcune spiagge non è arrivato il dato di vento: sono escluse dalla classifica.');
 
     costruisciGiorni();
     disegna();
-  }catch(e){
+  }).catch(function(e){
     mostraErrore(e);
-  }finally{
+  }).then(function(){
     btn.disabled=false;
-    btn.innerHTML='<span class="icona">↻</span> Aggiorna';
-  }
+    btn.innerHTML='<span class="icona">&#8635;</span> Aggiorna';
+  });
 }
 
-/* Dati inventati: solo per controllare la grafica quando la rete è bloccata. */
-function modalitaProva(){
-  const ore=[], base=new Date(); base.setMinutes(0,0,0);
-  for(let k=0;k<72;k++){
-    const t=new Date(base.getTime()+k*3600000);
-    ore.push(t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'
-      +String(t.getDate()).padStart(2,'0')+'T'+String(t.getHours()).padStart(2,'0')+':00');
-  }
-  ORE=ore; dueModelli=true; conOnde=true;
-
-  const dir=[],vel=[],raf=[],oh=[],od=[],per=[],sst=[],ari=[];
-  for(let k=0;k<ore.length;k++){
-    const d=norm(20+k*3.4), v=9+9*Math.sin(k/7)+6*Math.sin(k/3.1);
-    dir.push(d); vel.push(Math.max(2,v)); raf.push(Math.max(3,v*1.5));
-    oh.push(Math.max(0.05,0.25+0.35*Math.sin(k/6))); od.push(norm(d+15));
-    per.push(4+Math.sin(k/5)); sst.push(24.5+0.4*Math.sin(k/12)); ari.push(26+4*Math.sin((k-4)/3.8));
-  }
-  DATI=SPIAGGE.map(s=>({spiaggia:s,
-    vi:{s:vel,d:dir,g:raf},
-    vg:{s:vel.map(x=>x*1.1),d:dir.map(x=>norm(x+12))},
-    aria:ari,onda:oh,ondaDir:od,periodo:per,sst:sst,conOnda:true}));
-
-  idxOra=0; ultimoAggiornamento=new Date();
-  document.getElementById('stato').style.display='none';
-  document.getElementById('avvisi').innerHTML='';
-  avviso('<b>Dati di prova.</b> Servono solo a vedere come si comporta la pagina: non sono previsioni reali.');
-  costruisciGiorni(); disegna();
+var bottoniModo=document.querySelectorAll('[data-modo]');
+for(var bm=0;bm<bottoniModo.length;bm++){
+  (function(b){
+    b.onclick=function(){
+      modo=b.getAttribute('data-modo');
+      for(var k=0;k<bottoniModo.length;k++){
+        bottoniModo[k].setAttribute('aria-pressed',bottoniModo[k]===b);
+      }
+      disegna();
+    };
+  })(bottoniModo[bm]);
 }
-
-document.querySelectorAll('[data-modo]').forEach(b=>{
-  b.onclick=()=>{
-    modo=b.dataset.modo;
-    document.querySelectorAll('[data-modo]').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    disegna();
-  };
-});
-document.getElementById('aggiorna').onclick=aggiornaDati;
+document.getElementById('aggiorna').onclick=function(){ aggiornaDati(); };
 
 aggiornaDati();
 </script>
